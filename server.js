@@ -23,7 +23,14 @@ app.get('/countries', async (req, res) => {
   res.json(allCountries)
 })
 //update
-
+app.put('/countries/:id', async (req, res) => {
+  let updatedCountry = await Country.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true }
+  )
+  res.json(updatedCountry)
+})
 //delete
 
 app.listen(PORT, () => {
