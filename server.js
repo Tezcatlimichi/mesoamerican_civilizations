@@ -59,6 +59,12 @@ app.put('/civilizations/:id', async (req, res) => {
   )
   res.json(updatedCivilization)
 })
+//delete civilization
+app.delete('/civilizations/:id', async (req, res) => {
+  let deletedCivilization = await Civilization.findByIdAndDelete(req.params.id)
+
+  res.json(deletedCivilization)
+})
 app.listen(PORT, () => {
   console.log(`Express server listening on port: ${PORT}`)
 })
