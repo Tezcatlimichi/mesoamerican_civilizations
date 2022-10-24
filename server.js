@@ -50,7 +50,15 @@ app.post('/civilizations', async (req, res) => {
   let createdCivilization = await Civilization.create(requestBody)
   res.json(createdCivilization)
 })
-
+//update civilization
+app.put('/civilizations/:id', async (req, res) => {
+  let updatedCivilization = await Civilization.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true }
+  )
+  res.json(updatedCivilization)
+})
 app.listen(PORT, () => {
   console.log(`Express server listening on port: ${PORT}`)
 })
