@@ -37,11 +37,20 @@ app.delete('/countries/:id', async (req, res) => {
   res.json(deletedCountry)
 })
 //Civilizations
-//create civilization
+//get civilization
 app.get('/civilizations', async (req, res) => {
   const allCivilizations = await Civilization.find({})
   res.json(allCivilizations)
 })
+//create civilization
+app.post('/civilizations', async (req, res) => {
+  let countryId = '6356b617bea130ad66288429'
+  const requestBody = { ...req.body, country: countryId }
+
+  let createdCivilization = await Civilization.create(requestBody)
+  res.json(createdCivilization)
+})
+
 app.listen(PORT, () => {
   console.log(`Express server listening on port: ${PORT}`)
 })
