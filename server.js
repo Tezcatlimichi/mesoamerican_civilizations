@@ -22,7 +22,7 @@ app.get('/countries', async (req, res) => {
   let allCountries = await Country.find({})
   res.json(allCountries)
 })
-//update
+//update country
 app.put('/countries/:id', async (req, res) => {
   let updatedCountry = await Country.findByIdAndUpdate(
     req.params.id,
@@ -31,7 +31,12 @@ app.put('/countries/:id', async (req, res) => {
   )
   res.json(updatedCountry)
 })
-//delete
+//delete country
+app.delete('/countries/:id', async (req, res) => {
+  let deletedCountry = await Country.findByIdAndDelete(req.params.id)
+
+  res.json(deletedCountry)
+})
 
 app.listen(PORT, () => {
   console.log(`Express server listening on port: ${PORT}`)
