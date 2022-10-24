@@ -13,10 +13,18 @@ app.get('/', (req, res) => {
 
 //Country route
 // create country route
-app.post('/civilizations', async (req, res) => {
+app.post('/countries', async (req, res) => {
   let createdCountry = await Country.create(req.body)
-  res.send(createdCountry)
+  res.json(createdCountry)
 })
+// read all countries ---> GET
+app.get('/countries', async (req, res) => {
+  let allCountries = await Country.find({})
+  res.json(allCountries)
+})
+//update
+
+//delete
 
 app.listen(PORT, () => {
   console.log(`Express server listening on port: ${PORT}`)
