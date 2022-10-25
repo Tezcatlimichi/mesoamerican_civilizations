@@ -5,9 +5,10 @@ const Nav = () => {
   
   return (
     <nav className="navbar">
-      <h4>Mesoamerican Civilizations</h4>
+      <h4>Xóchitl</h4>
       <div>
         <Link to="/"> Home</Link >
+        <Link to="countries">Countries</Link>
         <Link>Add Civilization</Link>
       </div>
     </nav>
