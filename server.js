@@ -48,7 +48,7 @@ app.get('/civilizations', async (req, res) => {
 })
 //create civilization
 app.post('/civilizations', async (req, res) => {
-  let countriesId = [
+  let countriesIds = [
     '6356b662bea130ad6628842d',
     '6356b4cdbea130ad66288423',
     '6356b514bea130ad66288425'
@@ -56,15 +56,10 @@ app.post('/civilizations', async (req, res) => {
   const requestBody = { ...req.body }
 
   let createdCivilization = await Civilization.create(requestBody)
-  console.log(createdCivilization._id)
-  // let updated = await Civilization.findByIdAndUpdate(
-  //   createdCivilization._id,
-  //   {
-  //     $push: { countries: countriesId }
-  //   },
-  //   { new: true }
-  // )
-  createdCivilization.countries.push(countriesId)
+
+  countriesIds.forEach((country) => {
+    createdCivilization.countries.push(country)
+  })
   createdCivilization.save()
   res.json(createdCivilization)
 })

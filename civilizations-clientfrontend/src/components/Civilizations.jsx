@@ -11,7 +11,7 @@ const Civilizations = () => {
 
   useEffect(() => {
     const apiCall = async () => {
-      let response = await axios.get('http://localhost:3001/civilizations')
+      let response = await axios.get('http://localhost:3001/civilizations/')
       setCivilizations(response.data)
     }
     apiCall()
