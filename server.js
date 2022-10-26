@@ -48,11 +48,7 @@ app.get('/civilizations', async (req, res) => {
 })
 //create civilization
 app.post('/civilizations', async (req, res) => {
-  let countriesIds = [
-    '6356b662bea130ad6628842d',
-    '6356b4cdbea130ad66288423',
-    '6356b514bea130ad66288425'
-  ]
+  let countriesIds = ['6356b662bea130ad6628842d']
   const requestBody = { ...req.body }
 
   let createdCivilization = await Civilization.create(requestBody)
