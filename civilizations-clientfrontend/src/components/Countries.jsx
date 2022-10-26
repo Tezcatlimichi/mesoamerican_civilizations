@@ -1,13 +1,15 @@
 
 import {useNavigate} from "react-router-dom"
-import {Link} from "react-router-dom"
+
 
 const Countries = (props) => {
   
   let navigate = useNavigate()
 
   const showCountry = (country) => {
-    navigate(`${country.id}`)
+    console.log(country)
+    navigate(`${country._id}`)
+    
 
   }
 

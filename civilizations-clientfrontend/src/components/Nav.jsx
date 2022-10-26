@@ -9,7 +9,8 @@ const Nav = () => {
       <div>
         <Link to="/"> Home</Link >
         <Link to="countries">Countries</Link>
-        <Link>Add Civilization</Link>
+        <Link>Add civilization</Link>
+        <Link to="civilizations">Civilizations</Link>
       </div>
     </nav>
   )
