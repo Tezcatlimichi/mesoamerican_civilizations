@@ -9,8 +9,9 @@ import Civilizations from './components/Civilizations'
 import CountriesDetails from './components/CountriesDetails'
 import CivilizationForm from './components/CivilizationForm'
 
-function App(props) {
+function App() {
   const [countries, setCountries] = useState([])
+  const [form, setForm] = useState({ name: '', image: '', description: '' })
 
   useEffect(() => {
     const apiCall = async () => {
