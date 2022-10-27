@@ -19,10 +19,17 @@ app.post('/countries', async (req, res) => {
   let createdCountry = await Country.create(req.body)
   res.json(createdCountry)
 })
+
 // read all countries ---> GET
 app.get('/countries', async (req, res) => {
   let allCountries = await Country.find({})
   res.json(allCountries)
+})
+
+// read single country
+app.get('/countries/:id', async (req, res) => {
+  let selectedCountry = await Country.findById(req.params.id)
+  res.json(selectedCountry)
 })
 
 //update country
@@ -60,14 +67,13 @@ app.post('/civilizations', async (req, res) => {
   res.json(createdCivilization)
 })
 
-//get single civilization
-app.get('/civilizations/:id', async (req, res) => {
-  let foundCivilization = await Civilization.findById(req.params.id).populate(
-    'countries'
-  )
-  console.log(foundCivilization)
-  res.json(foundCivilization)
-})
+// //get single civilization
+// app.get('/civilizations/:id', async (req, res) => {
+//   let foundCivilization = await Civilization.findById(req.params.id).populate(
+//     'countries'
+//   )
+//   res.json(foundCivilization)
+// })
 //update civilization
 app.put('/civilizations/:id', async (req, res) => {
   let updatedCivilization = await Civilization.findByIdAndUpdate(
