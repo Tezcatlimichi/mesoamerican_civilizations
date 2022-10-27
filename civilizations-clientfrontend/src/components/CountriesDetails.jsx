@@ -54,7 +54,16 @@ const CountriesDetails =(props)=>{
 
 
   return (
- 
+    <div className="card-grid">
+
+      {matchCivilization ? 
+      matchCivilization.map((civilization)=>(
+        <div className="card-card" onClick={() => showCivilization(civilization)} key={civilization.id}>
+        <img style={{ display: 'block' }} src={civilization.image} alt={civilization.name} />
+        <h3>{civilization.name}</h3>
+      </div>
+      )) : "" }
+    </div>
   )
 }
 
