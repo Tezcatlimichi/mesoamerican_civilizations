@@ -37,6 +37,7 @@ function App(props) {
             element={<CountriesDetails countries={countries} />}
           />
           <Route path="countries/:id/:id" element={<Civilizations />} />
+          <Route path="new" element={<CivilizationForm />} />
         </Routes>
       </main>
     </div>
