@@ -7,9 +7,9 @@ import Nav from './components/Nav'
 import Countries from './components/Countries'
 import Civilizations from './components/Civilizations'
 import CountriesDetails from './components/CountriesDetails'
-import { useParams } from 'react-router-dom'
+import CivilizationForm from './components/CivilizationForm'
 
-function App() {
+function App(props) {
   const [countries, setCountries] = useState([])
 
   useEffect(() => {
