@@ -6,6 +6,8 @@ import Home from './components/Home'
 import Nav from './components/Nav'
 import Countries from './components/Countries'
 import Civilizations from './components/Civilizations'
+import CountriesDetails from './components/CountriesDetails'
+import { useParams } from 'react-router-dom'
 
 function App() {
   const [countries, setCountries] = useState([])
@@ -30,7 +32,11 @@ function App() {
             path="countries"
             element={<Countries countries={countries} />}
           />
-          <Route path="countries/:id" element={<Civilizations />} />
+          <Route
+            path="countries/:id"
+            element={<CountriesDetails countries={countries} />}
+          />
+          <Route path="countries/:id/:id" element={<Civilizations />} />
         </Routes>
       </main>
     </div>
