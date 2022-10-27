@@ -26,14 +26,16 @@ const CountriesDetails =(props)=>{
       setCivilizations(response.data)
     }
     getCivilization()
+    const updateCivilizations = ()=>{
+    setCivilizations(props.moveCivilization)  
+    }
+    updateCivilizations()
   }
   if (selectedCountry && civilizations){
       let matchingCivilization = []
       civilizations.map((civilization)=>{
         civilization.countries.map((country)=>{
-          console.log(country === id)
           if(country === id){
-            console.log(civilization)
             matchingCivilization.push(civilization) 
           }
         })
@@ -43,7 +45,7 @@ const CountriesDetails =(props)=>{
 
   },[id,selectedCountry,civilizations])
 
-  
+
 
   let navigate = useNavigate()
 
