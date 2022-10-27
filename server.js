@@ -10,9 +10,6 @@ app.use(express.json())
 app.use(cors())
 app.use(express.static(`${__dirname}/civilizations-clientfrontend/build`))
 
-app.get('/', (req, res) => {
-  res.send({ msg: 'This route is being hit' })
-})
 //Countries
 // create country route
 app.post('/countries', async (req, res) => {
@@ -67,13 +64,12 @@ app.post('/civilizations', async (req, res) => {
   res.json(createdCivilization)
 })
 
-// //get single civilization
-// app.get('/civilizations/:id', async (req, res) => {
-//   let foundCivilization = await Civilization.findById(req.params.id).populate(
-//     'countries'
-//   )
-//   res.json(foundCivilization)
-// })
+//get single civilization
+app.get('/civilizations/:id', async (req, res) => {
+  let foundCivilization = await Civilization.findById(req.params.id)
+  res.json(foundCivilization)
+})
+
 //update civilization
 app.put('/civilizations/:id', async (req, res) => {
   let updatedCivilization = await Civilization.findByIdAndUpdate(
