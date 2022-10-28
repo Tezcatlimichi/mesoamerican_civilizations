@@ -11,9 +11,9 @@ const CountriesDetails =(props)=>{
   const [civilizations, setCivilizations] = useState()
   const [selectedCountry, setSelectedCountry] = useState("")
   const [matchCivilization,setMatchCivilization] = useState()
- let {id} = useParams()
+   let {id} = useParams()
 
-
+// reading countries and civilizations
   useEffect(()=>{
     if (!selectedCountry && !civilizations){
     const apiCall = async () =>{
@@ -54,6 +54,25 @@ const CountriesDetails =(props)=>{
 
   }
 
+  //country update
+  const [countryForm, setCountryForm] = useState({ name: '', image: '' })
+   // update civilization
+  const updateCivilization = async (event) => {
+  event.preventDefault()
+  let updatedCivilization = await axios.put(
+    `http://localhost:3001/countries/${id}`,
+    countryForm
+  )
+  console.log(updatedCivilization)
+  updateCivilization([...civilizations, updateCivilization])
+  setCountryForm({
+    name: '',
+    image: ''
+  })
+}
+const handleChangeCountry = (event) => {
+  setCountryForm({ ...countryForm, [event.target.id]: event.target.value })
+}
 
   return (
     <div className="card-grid">
@@ -65,6 +84,26 @@ const CountriesDetails =(props)=>{
         <h3>{civilization.name}</h3>
       </div>
       )) : "" }
+      <div className="update-country">
+      <h2>Update Country</h2>
+      <form onSubmit={updateCivilization} >
+      <label htmlFor="name">Name</label>
+      <input id="name" value={countryForm.name} onChange={handleChangeCountry} />
+      <label htmlFor="image">Image</label>
+      <input id="image" value={countryForm.image} onChange={handleChangeCountry}/>
+      <button type="submit">Submit</button>
+      </form>
+      </div>
+      <div className="delete-country">
+      <h2>Delete Country</h2>
+      <form onSubmit={updateCivilization} >
+      <label htmlFor="name">Name</label>
+      <input id="name" value={countryForm.name} onChange={handleChangeCountry} />
+      <label htmlFor="image">Image</label>
+      <input id="image" value={countryForm.image} onChange={handleChangeCountry}/>
+      <button type="submit">Submit</button>
+      </form>
+      </div>
     </div>
   )
 }

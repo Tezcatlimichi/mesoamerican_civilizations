@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
+
 import Home from './components/Home'
 import Nav from './components/Nav'
 import Countries from './components/Countries'
@@ -11,11 +12,14 @@ import CivilizationForm from './components/CivilizationForm'
 
 function App() {
   const [countries, setCountries] = useState([])
+  //civilization
   const [formState, setForm] = useState({
     name: '',
     image: '',
-    description: ''
+    description: '',
+    country: ''
   })
+
   const [moveCivilization, setMoveCivilization] = useState([])
 
   useEffect(() => {
@@ -29,7 +33,7 @@ function App() {
   const handleChange = (event) => {
     setForm({ ...formState, [event.target.id]: event.target.value })
   }
-
+  // create civilization
   const handleSubmit = async (event) => {
     event.preventDefault()
     let newCivilization = await axios
@@ -48,6 +52,7 @@ function App() {
     })
   }
 
+  // delete civilization
   return (
     <div className="App">
       <header>
@@ -65,7 +70,6 @@ function App() {
             element={
               <CountriesDetails
                 countries={countries}
-                handleSubmit={handleSubmit}
                 moveCivilization={moveCivilization}
               />
             }
