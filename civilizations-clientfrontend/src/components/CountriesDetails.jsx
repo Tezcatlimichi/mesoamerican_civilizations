@@ -54,9 +54,9 @@ const CountriesDetails =(props)=>{
 
   }
 
-  //country update
+  //update country
   const [countryForm, setCountryForm] = useState({ name: '', image: '' })
-   // update civilization
+   // update country
   const updateCivilization = async (event) => {
   event.preventDefault()
   let updatedCivilization = await axios.put(
@@ -73,6 +73,15 @@ const CountriesDetails =(props)=>{
 const handleChangeCountry = (event) => {
   setCountryForm({ ...countryForm, [event.target.id]: event.target.value })
 }
+
+// delete country
+
+const deleteCountry = async (event) =>{
+  let deletedCountry = await axios.delete(`http://localhost:3001/countries/${id}`)
+  console.log(deletedCountry)
+
+}
+
 
   return (
     <div className="card-grid">
@@ -96,12 +105,8 @@ const handleChangeCountry = (event) => {
       </div>
       <div className="delete-country">
       <h2>Delete Country</h2>
-      <form onSubmit={updateCivilization} >
-      <label htmlFor="name">Name</label>
-      <input id="name" value={countryForm.name} onChange={handleChangeCountry} />
-      <label htmlFor="image">Image</label>
-      <input id="image" value={countryForm.image} onChange={handleChangeCountry}/>
-      <button type="submit">Submit</button>
+      <form onSubmit={deleteCountry} >
+      <button type="submit">Delete</button>
       </form>
       </div>
     </div>
