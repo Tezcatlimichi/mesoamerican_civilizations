@@ -4,7 +4,7 @@ import axios from 'axios'
 
 
 
-const CivilizationForm = (props) =>{
+const Forms = (props) =>{
 
   const [countries, setCountries] = useState([])
   
@@ -22,6 +22,7 @@ const CivilizationForm = (props) =>{
   
   return(
     <div>
+      <div className='civilization-form'>
       <h1>Add a new civilization</h1>
       <form onSubmit={props.handleSubmit} >
       <label htmlFor="name">Name</label>
@@ -37,7 +38,18 @@ const CivilizationForm = (props) =>{
       <button type="submit">Submit</button>
     </form>
     </div>
+    <div className='country-form'>
+    <h1>Add a new country</h1>
+      <form onSubmit={props.createCountry} >
+      <label htmlFor="name">Name</label>
+      <input id="name" value={props.countryForm.name} onChange={props.countryChange} />
+      <label htmlFor="image">Image</label>
+      <input id="image" value={props.countryForm.image} onChange={props.countryChange}/>
+      <button type="submit">Submit</button>
+    </form>
+    </div>
+    </div>
   )
 }
 
-export default CivilizationForm
+export default Forms

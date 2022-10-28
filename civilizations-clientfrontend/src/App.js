@@ -8,7 +8,7 @@ import Nav from './components/Nav'
 import Countries from './components/Countries'
 import Civilizations from './components/Civilizations'
 import CountriesDetails from './components/CountriesDetails'
-import CivilizationForm from './components/CivilizationForm'
+import Forms from './components/Forms'
 
 function App() {
   const [countries, setCountries] = useState([])
@@ -19,8 +19,9 @@ function App() {
     description: '',
     country: ''
   })
-
   const [moveCivilization, setMoveCivilization] = useState([])
+  //country
+  const [countryForm, setCountryForm] = useState({ name: '', image: '' })
 
   useEffect(() => {
     const apiCall = async () => {
@@ -51,8 +52,25 @@ function App() {
       description: ''
     })
   }
+  // create country
+  const createCountry = async (event) => {
+    event.preventDefault()
+    let newCountry = await axios
+      .post('http://localhost:3001/countries', countryForm)
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    setCountries([...countries, newCountry.data])
+    setCountryForm({ name: '', image: '' })
+  }
 
-  // delete civilization
+  const countryChange = (event) => {
+    setCountryForm({ ...countryForm, [event.target.id]: event.target.value })
+  }
+
   return (
     <div className="App">
       <header>
@@ -78,10 +96,13 @@ function App() {
           <Route
             path="new"
             element={
-              <CivilizationForm
+              <Forms
                 formState={formState}
                 handleChange={handleChange}
                 handleSubmit={handleSubmit}
+                createCountry={createCountry}
+                countryChange={countryChange}
+                countryForm={countryForm}
               />
             }
           />
