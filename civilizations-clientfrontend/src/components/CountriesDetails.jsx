@@ -57,14 +57,13 @@ const CountriesDetails =(props)=>{
   //update country
   const [countryForm, setCountryForm] = useState({ name: '', image: '' })
    // update country
-  const updateCivilization = async (event) => {
+  const updateCountry = async (event) => {
   event.preventDefault()
-  let updatedCivilization = await axios.put(
+  let updatedCountry = await axios.put(
     `http://localhost:3001/countries/${id}`,
     countryForm
   )
-  console.log(updatedCivilization)
-  updateCivilization([...civilizations, updateCivilization])
+  setSelectedCountry([...selectedCountry, updatedCountry])
   setCountryForm({
     name: '',
     image: ''
@@ -93,9 +92,9 @@ const deleteCountry = async (event) =>{
         <h3>{civilization.name}</h3>
       </div>
       )) : "" }
-      <div className="update-country">
+      <div className="update">
       <h2>Update Country</h2>
-      <form onSubmit={updateCivilization} >
+      <form onSubmit={updateCountry} >
       <label htmlFor="name">Name</label>
       <input id="name" value={countryForm.name} onChange={handleChangeCountry} />
       <label htmlFor="image">Image</label>
@@ -103,7 +102,7 @@ const deleteCountry = async (event) =>{
       <button type="submit">Submit</button>
       </form>
       </div>
-      <div className="delete-country">
+      <div className="delete">
       <h2>Delete Country</h2>
       <form onSubmit={deleteCountry} >
       <button type="submit">Delete</button>
