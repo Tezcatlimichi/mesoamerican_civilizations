@@ -34,11 +34,11 @@
 
 #### **Chichen Itza**
 
-![Pyramid](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.redd.it%2Fcdb3z7degp651.jpg&f=1&nofb=1&ipt=d297078f5d54304fb148bf53ba6bdef045e3ceb1004062c1d469dcef67a48c44&ipo=images)
+![Pyramid](https://imgur.com/qrxOEMD.png)
 
 #### **Olmec**
 
-![olmec](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.H2kHgNNkEG_ymnzgFYhSLQHaE7%26pid%3DApi&f=1&ipt=94206392b731c8ec37ebfaab3a57a77412c7c347e6ee1f98b692690206e23b56&ipo=images)
+![olmec](https://imgur.com/1ws6Tyt.png)
 
 ---
 
@@ -51,3 +51,5 @@
 ### **_Credits_**
 
 #### **Images**: [DuckDuckGo Search](https://duckduckgo.com/)
+
+#### **Axios**: [Axios](https://www.knowledgehut.com/blog/web-development/axios-in-react)

@@ -63,7 +63,7 @@ const CountriesDetails =(props)=>{
     `http://localhost:3001/countries/${id}`,
     countryForm
   )
-  setSelectedCountry([...selectedCountry, updatedCountry])
+  setSelectedCountry([selectedCountry, updatedCountry])
   setCountryForm({
     name: '',
     image: ''

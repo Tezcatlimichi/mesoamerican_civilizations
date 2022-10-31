@@ -54,9 +54,9 @@ function App() {
   }
   // create country
   const createCountry = async (event) => {
-    event.preventDefault()
+    // event.preventDefault()
     let newCountry = await axios
-      .post('http://localhost:3001/countries', countryForm)
+      .post('http://localhost:3001/countries/', countryForm)
       .then((response) => {
         console.log(response)
       })
